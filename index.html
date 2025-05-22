@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jani & Zalissa – Onze Liefde</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdf8f4;
+      --accent: #c97b7b;
+      --text: #3f3f3f;
+      --glass: rgba(255, 255, 255, 0.6);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
+      color: var(--accent);
+    }
+
+    header {
+      height: 100vh;
+      background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('Foto1.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .header-content {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2rem;
+      border-radius: 16px;
+      animation: fadeInDown 2s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 4rem;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      font-style: italic;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .countdown {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+    }
+
+    
+
+    nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0.5rem 1rem; /* voeg padding toe zodat het 'vakje' zichtbaar is */
+  border-radius: 8px;   /* mooi afgeronde hoeken */
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  display: inline-block; /* zorgt dat padding werkt zoals verwacht */
+}
+
+nav a:hover {
+  background-color: #9d4f4f; /* zachte roze achtergrond bij hover */
+  color: white;              /* tekst wit voor contrast */
+}
+
+    main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  animation: fadeIn 2s ease-in;
+
+  background: linear-gradient(135deg, #f9e6e6 0%, #fdf8f4 60%, #f7e5e5 100%);
+  box-shadow:
+    0 8px 20px rgba(201, 123, 123, 0.3),
+    inset 0 0 60px rgba(255, 255, 255, 0.7);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtiele lichtvlekken als 'sparkle' overlay */
+main::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.25), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.15), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+}
+
+/* Zorg dat content boven de overlay staat */
+main > * {
+  position: relative;
+  z-index: 1;
+}
+
+    section {
+      margin-bottom: 6rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideUp 1.2s forwards;
+    }
+
+    section:nth-of-type(2) { animation-delay: 0.3s; }
+    section:nth-of-type(3) { animation-delay: 0.6s; }
+
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .rsvp-intro {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--accent);
+}
+
+    form {
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    form fieldset {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+form fieldset legend {
+  font-weight: 600;
+  padding: 0 0.5rem;
+  color: var(--accent);
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+/* Radio labels inline blok met padding */
+form fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text);
+  user-select: none;
+}
+
+/* Radio input stijlen */
+form fieldset input[type="radio"] {
+  margin-right: 0.6rem;
+  accent-color: var(--accent); /* moderne browsers kleuren radio */
+  cursor: pointer;
+}
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      border: none;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #a45757;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    ul li {
+      background: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      font-weight: 600;
+    }
+
+    .qr {
+      margin-top: 2rem;
+    }
+
+    .qr img {
+      max-width: 180px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .qr img:hover {
+      transform: scale(1.05);
+    }
+
+    .qr a {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    footer {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      nav { flex-direction: column; gap: 1rem; }
+    }
+    #planning ul {
+  list-style: none;
+  padding: 0;
+}
+
+#planning ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-weight: 600;
+  transition: background-color 0.3s;
+  text-align: left;
+}
+
+#planning ul li:hover {
+  background-color: #ecb3b3;
+}
+
+#planning ul li img {
+  height: 32px;
+  width: auto;
+  margin-left: 1rem;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+  color: var(--accent);
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+    background-position: center;
+  }
+
+  .header-content {
+    padding: 1.5rem;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+ nav {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
+    z-index: 150;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    padding: 1rem 0;
+    text-align: right;
+  }
+
+  main {
+    padding: 2rem 1rem;
+  }
+
+  section {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  input, textarea, button {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  ul {
+    grid-template-columns: 1fr;
+  }
+
+  #planning ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  #planning ul li img {
+    margin: 0;
+    align-self: flex-end;
+  }
+
+  iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 12px;
+    margin-top: 1rem;
+  }
+
+  .qr img {
+    max-width: 100%;
+    height: auto;
+  }
+  img {
+  max-width: 100%;
+  height: auto;
+}
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>Jani & Zalissa</h1>
+      <p>Samen verdwalen, maar altijd samen thuiskomen.</p>
+      <div class="countdown" id="countdown"></div>
+    </div>
+  </header>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    &#9776;
+  </div>
+
+  <nav>
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('rsvp')">Uitnodiging</a>
+    <a onclick="showPage('planning')">Planning</a>
+    <a onclick="showPage('fotogalerij')">Fotogalerij</a>
+    <a onclick="showPage('locatie')">Locatie</a>
+    <a onclick="showPage('contact')">Contact</a>
+  </nav>
+
+  <main>
+    <div id="home" class="page">
+      <section>
+        <h2>Welkom op onze trouwsite</h2>
+        <p>
+          Het gaat dan toch eindelijk gebeuren, wij gaan trouwen! En deze dag vieren we graag met jou!</p>
+        <p>
+          Daarom willen we je van harte uitnodigen voor onze bruiloft. Hopelijk tot dan! 🎉 
+        </p> 
+      </section>
+    </div>
+
+    <div id="rsvp" class="page" style="display:none">
+      <section>
+        <h2>Jouw Aanwezigheid</h2>
+        <p class="rsvp-intro">We zouden het fantastisch vinden als jij erbij bent op onze grote dag!</p>
+        <form action="https://formspree.io/f/mvgayrpl" method="POST">
+
+          <fieldset>
+            <legend>Jouw naam</legend>
+            <input type="text" name="naam" placeholder="Jouw naam" required />
+          </fieldset>
+        
+          <fieldset>
+            <legend>Partner</legend>
+            <input type="text" name="plus1" placeholder="Partner (indien van toepassing)" />
+          </fieldset>
+        
+          <fieldset>
+            <legend>Speciale wensen of boodschap (optioneel)</legend>
+            <textarea name="boodschap" rows="4" placeholder="Laat hier weten of je vegetarisch eet, allergieën hebt of iets anders wil delen."></textarea>
+          </fieldset>
+        
+          <button type="submit">Bevestigen 💌</button>
+          <p>
+            Gelieve te antwoorden vóór <strong>23 maart 2026</strong>.
+          </p>       
+        </form>
+      </section>
+    </div>
+
+    <div id="planning" class="page" style="display:none">
+      <section>
+        <h2>Onze Dag</h2>
+        <ul>
+          <li>12u00 - Burgerlijke trouw (iedereen welkom) <img src="c:\Users\Omen\Documents\trouw.png" alt="trouw" /></li>
+          <li>17u00 - Ceremonie (enkel genodigden - intieme kring) <img src="c:\Users\Omen\Documents\ring.png" alt="ring" /></li>
+          <li>17u30 - Receptie <img src="c:\Users\Omen\Documents\Cava.png" alt="receptie" /></li>
+          <li>18u45 - Aan tafel <img src="c:\Users\Omen\Documents\Tafel.png" alt="tafel" /></li>
+          <li>19u00 - Start All You Can Eat Streetfood door Mi! Streetfood <img src="c:\Users\Omen\Documents\Taco.png" alt="streetfood" /></li>
+          <li>21u00 - Start dessertbuffet <img src="c:\Users\Omen\Documents\Taart.png" alt="taart" /></li>
+          <li>22u30 - Openingsdans <img src="c:\Users\Omen\Documents\Vrouw.png" alt="dans" /></li>
+          <li>22u35 - Dansfeest <img src="c:\Users\Omen\Documents\Disco.png" alt="feest" /></li>
+        </ul>
+      </section>
+    </div>
+
+    <div id="fotogalerij" class="page" style="display:none">
+      <section>
+        <h2>Herinneringen Delen</h2>
+        <p>Heb jij leuke foto's van onze dag? Upload ze hier!</p>
+        <div class="qr">
+          <img src="c:\Users\Omen\Documents\QR.PNG" alt="QR Code">
+          <p><a href="https://my.wedibox.com/recJwfNIEiNYL4e0" target="_blank">Upload jouw foto's 📷</a></p>
+        </div>
+      </section>
+    </div>
+
+    <div id="locatie" class="page" style="display:none">
+      <section>
+        <h2>De Locatie</h2>
+        <p>📍 <strong>'t Oud Gebinte - Belaardstraat 99, 8870 Izegem</strong></p>
+        <p>Parkeren kan ter plaatse 💒</p>
+        <iframe 
+          src="https://www.google.com/maps?q=Beiaardstraat+99,+8870+Izegem&output=embed" 
+          allowfullscreen 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Locatie van 't Oud Gebinte in Izegem"
+        ></iframe>
+      </section>
+    </div>
+
+    <div id="contact" class="page" style="display:none">
+      <section>
+        <h2>Contact</h2>
+        <p>Heb je vragen of wil je ons iets zeggen?</p>
+        <p>Mail ons via <a href="mailto:jani.swimberghe@gmail.com">jani.swimberghe@gmail.com</a><br>
+        of <a href="mailto:zalissa01@hotmail.com">zalissa01@hotmail.com</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Jani & Zalissa – Met liefde gemaakt 💕
+  </footer>
+
+  <script>
+    function showPage(id) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    // Toon standaard de homepagina
+    showPage('home');
+
+    // Countdown
+    const countdown = document.getElementById("countdown");
+    const weddingDate = new Date("2026-05-23T00:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `Nog ${days} dagen, ${hours}u ${minutes}m ${seconds}s tot het JA-woord 💕`;
+    }, 1000);
+
+    function toggleMenu() {
+  const nav = document.querySelector('nav');
+  nav.classList.toggle('show');
+}
+
+document.querySelectorAll('nav a').forEach(link =>
+  link.addEventListener('click', () => {
+    document.querySelector('nav').classList.remove('show');
+  })
+);
+
+document.addEventListener('click', function(event) {
+  const nav = document.querySelector('nav');
+  const hamburger = document.querySelector('.hamburger');
+
+  if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+    nav.classList.remove('show');
+  }
+});
+
+  </script>
+
+</body>
+</html>
