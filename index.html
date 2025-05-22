@@ -340,7 +340,7 @@ form fieldset input[type="radio"] {
   border-radius: 50%;
   position: fixed;
   top: 15px;
-  right: 20px;
+  left: 20px;
   z-index: 200;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -373,17 +373,17 @@ form fieldset input[type="radio"] {
   .hamburger {
     display: block;
   }
- nav {
+  nav {
     display: none;
     flex-direction: column;
     background: white;
     position: fixed;
     top: 60px;
-    right: 0;
+    left: 0; /* <-- verplaatst menu naar links */
     width: 200px;
-    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1); /* schaduw aan de andere kant */
     padding: 1rem;
-    border-radius: 10px 0 0 10px;
+    border-radius: 0 10px 10px 0; /* afgeronde hoeken aan rechterkant */
     z-index: 150;
   }
 
