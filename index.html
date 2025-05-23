@@ -625,6 +625,22 @@ document.addEventListener('click', function(event) {
   }
 });
 
+        // Altijd naar boven scrollen als je op de pagina komt
+    window.scrollTo(0, 0);
+
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("main-content");
+
+    // Toon de intro altijd op de homepagina
+    intro.style.display = "block";
+    main.style.display = "none";
+
+    // Verberg de intro en toon de info na 3 seconden
+    setTimeout(() => {
+      intro.style.display = "none";
+      main.style.display = "block";
+    }, 3000); // 3 seconden
+
   </script>
 
 </body>
