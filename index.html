@@ -573,18 +573,37 @@ form fieldset input[type="radio"] {
 
   <script>
 function showPage(id) {
-  const pages = document.querySelectorAll('.page');
-  pages.forEach(p => p.style.display = 'none');
-  const activePage = document.getElementById(id);
-  activePage.style.display = 'block';
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(p => p.style.display = 'none');
+    const activePage = document.getElementById(id);
+    activePage.style.display = 'block';
 
-  // Scroll automatisch naar het juiste deel bij mobiel
-  if (window.innerWidth <= 768) {
-    setTimeout(() => {
-      activePage.scrollIntoView({ behavior: 'smooth' });
-    }, 100); // kleine delay zodat layout kan aanpassen
+    if (id === 'home') {
+      // Scroll helemaal naar boven
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Scroll alleen naar het hoofdgedeelte van de pagina
+      const main = document.querySelector('main');
+      const offset = main.offsetTop;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+
+    // Verberg mobiel menu indien open
+    const nav = document.querySelector('nav');
+    if (nav.classList.contains('show')) {
+      nav.classList.remove('show');
+    }
   }
-}
+
+  function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('show');
+  }
+
+  // Zorg dat bij laden van de site de juiste sectie getoond wordt
+  window.addEventListener('load', () => {
+    showPage('home'); // Altijd naar boven
+  });
 
     // Toon standaard de homepagina
     showPage('home');
