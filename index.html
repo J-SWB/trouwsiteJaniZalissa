@@ -572,11 +572,19 @@ form fieldset input[type="radio"] {
   </footer>
 
   <script>
-    function showPage(id) {
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(p => p.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
+function showPage(id) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.style.display = 'none');
+  const activePage = document.getElementById(id);
+  activePage.style.display = 'block';
+
+  // Scroll automatisch naar het juiste deel bij mobiel
+  if (window.innerWidth <= 768) {
+    setTimeout(() => {
+      activePage.scrollIntoView({ behavior: 'smooth' });
+    }, 100); // kleine delay zodat layout kan aanpassen
+  }
+}
 
     // Toon standaard de homepagina
     showPage('home');
