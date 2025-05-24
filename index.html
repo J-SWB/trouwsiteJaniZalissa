@@ -31,6 +31,16 @@
       color: var(--accent);
     }
 
+    .intro-text, .invite-text, .rsvp-text, .gallery-text, .location-text, .closing-text {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
     header {
       height: 100vh;
       background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('Foto1.jpg') center/cover no-repeat;
@@ -185,23 +195,59 @@ form fieldset legend {
   text-align: left;
 }
 
-/* Radio labels inline blok met padding */
 form fieldset label {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 0;
-  font-weight: 600;
-  cursor: pointer;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
   color: var(--text);
-  user-select: none;
+  cursor: pointer;
 }
 
-/* Radio input stijlen */
 form fieldset input[type="radio"] {
-  margin-right: 0.6rem;
-  accent-color: var(--accent); /* moderne browsers kleuren radio */
+  accent-color: var(--accent);
   cursor: pointer;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.radio-row {
+  display: flex;
+  align-items: center;
+}
+
+.radio-row span {
+  width: 100%;
+  text-align: left;
+}
+
+.radio-row input[type="radio"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.cadeautip {
+  background: var(--glass);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  color: var(--text);
+  animation: fadeIn 2s ease-in;
+}
+
+.cadeautip h3 {
+  color: var(--accent);
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  font-family: 'Great Vibes', cursive;
 }
 
     input, textarea, button {
@@ -230,6 +276,7 @@ form fieldset input[type="radio"] {
       padding: 0;
       display: grid;
       gap: 1rem;
+
     }
 
     ul li {
@@ -330,6 +377,38 @@ form fieldset input[type="radio"] {
   margin-left: 1rem;
 }
 
+.contact-list {
+  list-style: none;
+  max-width: 400px;
+  margin: 1rem auto 0;
+  padding: 0;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.contact-list li {
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.contact-list a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-list a:hover,
+.contact-list a:focus {
+  color: #9d4f4f;
+  outline: none;
+  text-decoration: underline;
+}
+
 .hamburger {
   display: none;
   font-size: 2.4rem;
@@ -347,7 +426,7 @@ form fieldset input[type="radio"] {
   animation: pulse 2s infinite ease-in-out;
 }
 
-  .hamburger:hover {
+.hamburger:hover {
   background-color: #a45757;
   transform: scale(1.1) rotate(10deg);
 }
@@ -477,12 +556,39 @@ form fieldset input[type="radio"] {
   <main>
     <div id="home" class="page">
       <section>
-        <h2>Welkom op onze trouwsite</h2>
-        <p>
-          Het gaat dan toch eindelijk gebeuren, wij gaan trouwen! En deze dag vieren we graag met jou!</p>
-        <p>
-          Daarom willen we je van harte uitnodigen voor onze bruiloft. Hopelijk tot dan! 🎉 
-        </p> 
+        <h2>Welkom op onze trouwsite!</h2>
+    
+        <div class="intro-text">
+          <p>Het is zover… Wij gaan trouwen en we kunnen niet wachten om deze bijzondere dag met jou te delen! 💕</p>
+        </div>
+    
+        <div class="invite-text">
+          <p>We nodigen je van harte uit om samen met ons te vieren, lachen en herinneringen te maken.</p>
+        </div>
+    
+        <div class="rsvp-text">
+          <p>
+            Wil je erbij zijn? Bevestig je aanwezigheid eenvoudig via het <a onclick="showPage('rsvp')" style="color: var(--accent); cursor: pointer; font-weight: 600;">aanwezigheidsformulier</a> 💌. 
+            Natuurlijk horen we ook graag jouw suggesties, speciale wensen of favoriete nummers om het feest extra bijzonder te maken!
+          </p>
+        </div>
+    
+        <div class="gallery-text">
+          <p>
+            Vergeet ook niet je mooiste foto’s van onze trouwdag en de dagen erna te delen via onze 
+            <a onclick="showPage('fotogalerij')" style="color: var(--accent); cursor: pointer; font-weight: 600;">fotogalerij 📸</a>.
+          </p>
+        </div>
+    
+        <div class="location-text">
+          <p>
+            Onze liefde vieren we bij <strong>‘t Oud Gebinte</strong> — <em>Beiaardstraat 99, 8870 Izegem</em> 📍. Parkeren kan makkelijk ter plaatse.
+          </p>
+        </div>
+    
+        <div class="closing-text">
+          <p>We kijken er enorm naar uit om samen met jou deze mooie dag onvergetelijk te maken! 🎊</p>
+        </div>
       </section>
     </div>
 
@@ -493,25 +599,52 @@ form fieldset input[type="radio"] {
         <form action="https://formspree.io/f/mvgayrpl" method="POST">
 
           <fieldset>
-            <legend>Jouw naam</legend>
+            <legend>Jouw naam 🆔</legend>
             <input type="text" name="naam" placeholder="Jouw naam" required />
           </fieldset>
         
           <fieldset>
-            <legend>Partner</legend>
+            <legend>Partner 💞</legend>
             <input type="text" name="plus1" placeholder="Partner (indien van toepassing)" />
           </fieldset>
         
           <fieldset>
-            <legend>Speciale wensen of boodschap (optioneel)</legend>
+            <legend>Aanwezigheid 📝</legend>
+            <div class="radio-group">
+              <label class="radio-row">
+                <span>Ja, ik vier/wij vieren graag mee! ✔️</span>
+                <input type="radio" name="aanwezigheid" value="ja" required>
+              </label>
+              <label class="radio-row">
+                <span>Helaas, ik kan/wij kunnen er niet bij zijn ❌</span>
+                <input type="radio" name="aanwezigheid" value="nee">
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Muziekvoorkeuren 🎶 (optioneel)</legend>
+            <textarea name="muziek" rows="2" placeholder="Heb je een nummer dat niet mag ontbreken op de dansvloer? Laat het ons weten! (Geen garanties, maar we doen ons best)"></textarea>
+          </fieldset>
+
+          <fieldset>
+            <legend>Speciale wensen of boodschap 💭 (optioneel)</legend>
             <textarea name="boodschap" rows="4" placeholder="Laat hier weten of je vegetarisch eet, allergieën hebt of iets anders wil delen."></textarea>
           </fieldset>
         
-          <button type="submit">Bevestigen 💌</button>
+          <button type="submit">Bevestigen 📩</button>
           <p>
             Gelieve te antwoorden vóór <strong>23 maart 2026</strong>.
           </p>       
         </form>
+
+        <div class="cadeautip">
+          <h3>Cadeautip 💌</h3>
+          <p>
+            Het mooiste cadeau? Samen feesten én een steuntje voor onze droomreis! ✈️
+          </p>
+        </div>
+
       </section>
     </div>
 
@@ -519,10 +652,10 @@ form fieldset input[type="radio"] {
       <section>
         <h2>Onze Dag</h2>
         <ul>
-          <li>12u00 - Burgerlijke trouw (iedereen welkom) <img src="trouw.png" alt="trouw" /></li>
-          <li>17u00 - Ceremonie (enkel genodigden - intieme kring) <img src="ring.png" alt="ring" /></li>
-          <li>17u30 - Receptie <img src="c:\Users\Omen\Documents\Cava.png" alt="Cava" /></li>
-          <li>18u45 - Aan tafel <img src="c:\Users\Omen\Documents\Tafel.png" alt="Tafel" /></li>
+          <li>12u00 - Burgerlijke trouw (iedereen is welkom!) <img src="trouw.png" alt="trouw" /></li>
+          <li>17u00 - Ceremonie (alleen voor de intieme kring) <img src="ring.png" alt="ring" /></li>
+          <li>17u30 - Receptie <img src="Cava.png" alt="receptie" /></li>
+          <li>18u45 - Aan tafel <img src="Tafel.png" alt="tafel" /></li>
           <li>19u00 - Start All You Can Eat Streetfood door Mi! Streetfood <img src="Taco.png" alt="streetfood" /></li>
           <li>21u00 - Start dessertbuffet <img src="Taart.png" alt="taart" /></li>
           <li>22u30 - Openingsdans <img src="Vrouw.png" alt="dans" /></li>
@@ -545,7 +678,7 @@ form fieldset input[type="radio"] {
     <div id="locatie" class="page" style="display:none">
       <section>
         <h2>De Locatie</h2>
-        <p>📍 <strong>'t Oud Gebinte - Belaardstraat 99, 8870 Izegem</strong></p>
+        <p>📍 <strong>'t Oud Gebinte - Beiaardstraat 99, 8870 Izegem</strong></p>
         <p>Parkeren kan ter plaatse 💒</p>
         <iframe 
           src="https://www.google.com/maps?q=Beiaardstraat+99,+8870+Izegem&output=embed" 
@@ -560,9 +693,18 @@ form fieldset input[type="radio"] {
     <div id="contact" class="page" style="display:none">
       <section>
         <h2>Contact</h2>
-        <p>Heb je vragen of wil je ons iets zeggen?</p>
-        <p>Mail ons via <a href="mailto:jani.swimberghe@gmail.com">jani.swimberghe@gmail.com</a><br>
-        of <a href="mailto:zalissa01@hotmail.com">zalissa01@hotmail.com</a></p>
+        <ul class="contact-list">
+          <li>
+            <strong>Jani</strong><br />
+            <a href="mailto:jani.swimberghe@gmail.com" aria-label="Email naar Jani">📧 jani.swimberghe@gmail.com</a><br />
+            <a href="tel:+32476263526" aria-label="Telefoonnummer Jani">📞 +32 476 26 35 26</a>
+          </li>
+          <li>
+            <strong>Zalissa</strong><br />
+            <a href="mailto:zalissa01@hotmail.com" aria-label="Email naar Zalissa">📧 zalissa01@hotmail.com</a><br />
+            <a href="tel:+32496041084" aria-label="Telefoonnummer Zalissa">📞 +32 496 04 10 84</a>
+          </li>
+        </ul>
       </section>
     </div>
   </main>
@@ -579,16 +721,15 @@ function showPage(id) {
     activePage.style.display = 'block';
 
     if (id === 'home') {
-      // Scroll helemaal naar boven
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Scroll alleen naar het hoofdgedeelte van de pagina
+
       const main = document.querySelector('main');
       const offset = main.offsetTop;
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
 
-    // Verberg mobiel menu indien open
     const nav = document.querySelector('nav');
     if (nav.classList.contains('show')) {
       nav.classList.remove('show');
@@ -600,15 +741,12 @@ function showPage(id) {
     nav.classList.toggle('show');
   }
 
-  // Zorg dat bij laden van de site de juiste sectie getoond wordt
   window.addEventListener('load', () => {
-    showPage('home'); // Altijd naar boven
+    showPage('home');
   });
 
-    // Toon standaard de homepagina
     showPage('home');
 
-    // Countdown
     const countdown = document.getElementById("countdown");
     const weddingDate = new Date("2026-05-23T00:00:00").getTime();
 
@@ -644,22 +782,18 @@ document.addEventListener('click', function(event) {
   }
 });
 
-        // Altijd naar boven scrollen als je op de pagina komt
     window.scrollTo(0, 0);
 
     const intro = document.getElementById("intro");
     const main = document.getElementById("main-content");
 
-    // Toon de intro altijd op de homepagina
     intro.style.display = "block";
     main.style.display = "none";
 
-    // Verberg de intro en toon de info na 3 seconden
     setTimeout(() => {
       intro.style.display = "none";
       main.style.display = "block";
-    }, 3000); // 3 seconden
-
+    }, 3000);
   </script>
 
 </body>
