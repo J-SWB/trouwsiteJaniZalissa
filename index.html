@@ -527,6 +527,27 @@ form fieldset input[type="radio"] {
   max-width: 100%;
   height: auto;
 }
+
+  .radio-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  /* Zorg dat de span voldoende breedte krijgt om tekst op 1 of max 2 regels te houden */
+  .radio-row span {
+    flex: 1; /* neemt de resterende breedte in */
+    white-space: normal; /* laat tekst normal breken, geen harde linebreak */
+    min-width: 0; /* voorkomt overflow */
+  }
+
+  /* input radio iets kleiner en met marge */
+  .radio-row input[type="radio"] {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
 }
   </style>
 </head>
