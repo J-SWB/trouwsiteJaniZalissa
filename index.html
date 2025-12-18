@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trouw website - Jani & Zalissa</title>
+  <title>Jani & Zalissa – Wij gaan trouwen</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -229,6 +229,37 @@ form fieldset input[type="radio"] {
 .radio-row input[type="radio"] {
   accent-color: var(--accent);
   cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem; /* ± 1–2 cm afstand */
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.checkbox-row span {
+  line-height: 1.4;
+  text-align: left;
+}
+
+#wijnveld {
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 .cadeautip {
@@ -527,8 +558,7 @@ form fieldset input[type="radio"] {
   max-width: 100%;
   height: auto;
 }
-
-  .radio-row {
+.radio-row {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
@@ -548,6 +578,7 @@ form fieldset input[type="radio"] {
     width: 18px;
     height: 18px;
   }
+
 }
   </style>
 </head>
@@ -556,7 +587,6 @@ form fieldset input[type="radio"] {
   <header>
     <div class="header-content">
       <h1>Jani & Zalissa</h1>
-      <p>Samen verdwalen, maar altijd samen thuiskomen.</p>
       <div class="countdown" id="countdown"></div>
     </div>
   </header>
@@ -567,7 +597,7 @@ form fieldset input[type="radio"] {
 
   <nav>
     <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('rsvp')">Uitnodiging</a>
+    <a onclick="showPage('rsvp')">RSVP</a>
     <a onclick="showPage('planning')">Planning</a>
     <a onclick="showPage('fotogalerij')">Fotogalerij</a>
     <a onclick="showPage('locatie')">Locatie</a>
@@ -610,6 +640,7 @@ form fieldset input[type="radio"] {
         <div class="closing-text">
           <p>We kijken er enorm naar uit om samen met jou deze mooie dag onvergetelijk te maken! 🎊</p>
         </div>
+        
       </section>
     </div>
 
@@ -620,17 +651,17 @@ form fieldset input[type="radio"] {
         <form action="https://formspree.io/f/mvgayrpl" method="POST">
 
           <fieldset>
-            <legend>Jouw naam 🆔</legend>
+            <legend>Jouw naam</legend>
             <input type="text" name="naam" placeholder="Jouw naam" required />
           </fieldset>
         
           <fieldset>
-            <legend>Partner 💞</legend>
+            <legend>Partner</legend>
             <input type="text" name="plus1" placeholder="Partner (indien van toepassing)" />
           </fieldset>
         
           <fieldset>
-            <legend>Aanwezigheid 📝</legend>
+            <legend>Aanwezigheid</legend>
             <div class="radio-group">
               <label class="radio-row">
                 <span>Ja, ik vier/wij vieren graag mee!</span>
@@ -643,19 +674,42 @@ form fieldset input[type="radio"] {
             </div>
           </fieldset>
 
-          <fieldset>
-            <legend>Muziekvoorkeuren 🎶 (optioneel)</legend>
-            <textarea name="muziek" rows="2" placeholder="Heb je een nummer dat niet mag ontbreken op de dansvloer? Laat het ons weten! (Geen garanties, maar we doen ons best)"></textarea>
-          </fieldset>
+          <fieldset class="aanwezig-extra" style="display:none;">
+            <legend>Wijnvoorkeuren (meerdere mogelijkheden)</legend>
+          
+            <div class="checkbox-group">
+              <label class="checkbox-row">
+                <input type="checkbox" name="wijnsoort[]" value="wit">
+                <span>Wit</span>
+              </label>
+          
+              <label class="checkbox-row">
+                <input type="checkbox" name="wijnsoort[]" value="rose">
+                <span>Rosé</span>
+              </label>
+          
+              <label class="checkbox-row">
+                <input type="checkbox" name="wijnsoort[]" value="rood">
+                <span>Rood</span>
+              </label>
+            </div>
+          </fieldset>          
 
-          <fieldset>
-            <legend>Speciale wensen of boodschap 💭 (optioneel)</legend>
-            <textarea name="boodschap" rows="4" placeholder="Laat hier weten of je vegetarisch eet, allergieën hebt of iets anders wil delen."></textarea>
-          </fieldset>
+          <fieldset class="aanwezig-extra" style="display:none;">
+            <legend>Muziekvoorkeuren (optioneel)</legend>
+            <textarea name="muziek" rows="2"
+              placeholder="Heb je een nummer dat niet mag ontbreken op de dansvloer? We doen ons best, maar kunnen niets beloven 😉"></textarea>
+          </fieldset>          
+
+          <fieldset class="aanwezig-extra" style="display:none;">
+            <legend>Speciale wensen of boodschap (optioneel)</legend>
+            <textarea name="boodschap" rows="4"
+              placeholder="Vegetarisch, allergieën of iets anders?"></textarea>
+          </fieldset>          
         
-          <button type="submit">Bevestigen 📩</button>
+          <button type="submit">Bevestigen</button>
           <p>
-            Gelieve te antwoorden vóór <strong>23 maart 2026</strong>.
+            Gelieve te antwoorden vóór <strong>31 maart 2026</strong>.
           </p>       
         </form>
 
@@ -673,14 +727,11 @@ form fieldset input[type="radio"] {
       <section>
         <h2>Onze Dag</h2>
         <ul>
-          <li>12u00 - Burgerlijke trouw (iedereen is welkom!) <img src="trouw.png" alt="trouw" /></li>
-          <li>16u45 - Ceremonie (alleen voor de intieme kring) <img src="ring.png" alt="ring" /></li>
-          <li>17u30 - Receptie <img src="Cava.png" alt="receptie" /></li>
-          <li>18u45 - Aan tafel <img src="Tafel.png" alt="tafel" /></li>
-          <li>19u00 - Start All You Can Eat Streetfood door Mi! Streetfood <img src="Taco.png" alt="streetfood" /></li>
-          <li>21u00 - Start dessertbuffet <img src="Taart.png" alt="taart" /></li>
-          <li>22u30 - Openingsdans <img src="Vrouw.png" alt="dans" /></li>
-          <li>22u35 - Dansfeest <img src="Disco.png" alt="feest" /></li>
+          <li>12u00 - We say "I do" (iedereen is welkom!) <img src="trouw.png" alt="trouw" /></li>
+          <li>17u30 - Cheers & Bites <img src="Cava.png" alt="receptie" /></li>
+          <li>19u00 - Food & Drinks <img src="Taco.png" alt="streetfood" /></li>
+          <li>21u00 - Sweet Delights <img src="Taart.png" alt="taart" /></li>
+          <li>22u30 - Dance & Enjoy <img src="Disco.png" alt="feest" /></li>
         </ul>
       </section>
     </div>
@@ -698,7 +749,7 @@ form fieldset input[type="radio"] {
 
     <div id="locatie" class="page" style="display:none">
       <section>
-        <h2>De Locatie</h2>
+        <h2>De locatie</h2>
         <p>📍 <strong>'t Oud Gebinte - Beiaardstraat 99, 8870 Izegem</strong></p>
         <p>Parkeren kan ter plaatse 💒</p>
         <iframe 
@@ -735,87 +786,83 @@ form fieldset input[type="radio"] {
   </footer>
 
   <script>
-function showPage(id) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.style.display = 'none');
-    const activePage = document.getElementById(id);
-    activePage.style.display = 'block';
-
-    if (id === 'home') {
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => {
+        p.style.display = 'none';
+      });
+  
+      const activePage = document.getElementById(id);
+      if (activePage) {
+        activePage.style.display = 'block';
+      }
+  
       const main = document.querySelector('main');
-      const offset = main.offsetTop;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
+      const scrollTarget = id === 'home' ? 0 : main.offsetTop;
+  
+      window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+  
+      document.querySelector('nav').classList.remove('show');
     }
-
-    const nav = document.querySelector('nav');
-    if (nav.classList.contains('show')) {
-      nav.classList.remove('show');
-    }
-  }
-
-  function toggleMenu() {
-    const nav = document.querySelector('nav');
-    nav.classList.toggle('show');
-  }
-
-  window.addEventListener('load', () => {
-    showPage('home');
-  });
-
-    showPage('home');
-
-    const countdown = document.getElementById("countdown");
-    const weddingDate = new Date("2026-05-23T00:00:00").getTime();
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdown.innerHTML = `Nog ${days} dagen, ${hours}u ${minutes}m ${seconds}s tot het JA-woord 💕`;
-    }, 1000);
-
+  
     function toggleMenu() {
-  const nav = document.querySelector('nav');
-  nav.classList.toggle('show');
-}
-
-document.querySelectorAll('nav a').forEach(link =>
-  link.addEventListener('click', () => {
-    document.querySelector('nav').classList.remove('show');
-  })
-);
-
-document.addEventListener('click', function(event) {
-  const nav = document.querySelector('nav');
-  const hamburger = document.querySelector('.hamburger');
-
-  if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
-    nav.classList.remove('show');
-  }
-});
-
-    window.scrollTo(0, 0);
-
-    const intro = document.getElementById("intro");
-    const main = document.getElementById("main-content");
-
-    intro.style.display = "block";
-    main.style.display = "none";
-
-    setTimeout(() => {
-      intro.style.display = "none";
-      main.style.display = "block";
-    }, 3000);
-  </script>
+      document.querySelector('nav').classList.toggle('show');
+    }
+  
+    window.addEventListener('load', () => {
+      showPage('home');
+    });
+  
+    /* Countdown */
+    const countdown = document.getElementById("countdown");
+    const weddingDate = new Date("2026-05-23T12:00:00").getTime();
+  
+    setInterval(() => {
+      const now = Date.now();
+      const distance = weddingDate - now;
+  
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+  
+      countdown.innerHTML =
+        `Wij gaan trouwen! Nog ${days} dagen, ${hours}u ${minutes}m ${seconds}s tot het JA-woord 💕`;
+    }, 1000);
+  
+    /* RSVP extra velden */
+    const aanwezigJa = document.querySelector('input[name="aanwezigheid"][value="ja"]');
+    const aanwezigNee = document.querySelector('input[name="aanwezigheid"][value="nee"]');
+    const extraVelden = document.querySelectorAll('.aanwezig-extra');
+  
+    function toonExtraVelden() {
+      extraVelden.forEach(v => v.style.display = 'block');
+    }
+  
+    function verbergExtraVelden() {
+      extraVelden.forEach(v => {
+        v.style.display = 'none';
+        v.querySelectorAll('input, textarea').forEach(el => {
+          if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+          else el.value = '';
+        });
+      });
+    }
+  
+    if (aanwezigJa && aanwezigNee) {
+      aanwezigJa.addEventListener('change', toonExtraVelden);
+      aanwezigNee.addEventListener('change', verbergExtraVelden);
+    }
+  
+    /* Sluit menu bij klik buiten */
+    document.addEventListener('click', e => {
+      const nav = document.querySelector('nav');
+      const hamburger = document.querySelector('.hamburger');
+  
+      if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+        nav.classList.remove('show');
+      }
+    });
+  </script>  
 
 </body>
 </html>
