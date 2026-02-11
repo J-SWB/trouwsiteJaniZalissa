@@ -271,6 +271,14 @@ form fieldset input[type="radio"] {
   animation: fadeIn 0.4s ease-in-out;
 }
 
+    .subtiele-info {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  font-style: italic;
+}
 
 .cadeautip {
   background: var(--glass);
@@ -692,7 +700,7 @@ form fieldset input[type="radio"] {
 
           <fieldset class="aanwezig-extra" style="display:none;">
             <legend>E-mailadres (niet verplicht)</legend>
-            <input type="text" name="e-mailadres" placeholder="e=mailadres" />
+            <input type="text" name="e-mailadres" placeholder="e-mailadres" />
             </fieldset> 
 
           <fieldset class="aanwezig-extra" style="display:none;">
@@ -720,11 +728,16 @@ form fieldset input[type="radio"] {
             </div>
           </fieldset>                   
 
-          <fieldset class="aanwezig-extra" style="display:none;">
-            <legend>Speciale wensen of boodschap (optioneel)</legend>
-            <textarea name="boodschap" rows="4"
-              placeholder="Eet je vegetarisch, heb je allergieën, heb je eventueel al een muziekverzoekje of een andere boodschap?"></textarea>
-          </fieldset>          
+<fieldset class="aanwezig-extra" style="display:none;">
+  <legend>Speciale wensen of boodschap (optioneel)</legend>
+  <textarea name="boodschap" rows="4"
+    placeholder="Eet je vegetarisch, heb je allergieën, heb je een muziekverzoekje of een andere boodschap?"></textarea>
+
+  <p class="subtiele-info">
+    Aanwezigheid bij de burgerlijke trouw hoef je niet apart te bevestigen. 
+    Ben je erbij, dan mag je dat hier gerust vermelden.
+  </p>
+</fieldset>         
         
           <button type="submit">Bevestigen</button>
           <p>
